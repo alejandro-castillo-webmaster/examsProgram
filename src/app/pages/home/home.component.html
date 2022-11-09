@@ -1,0 +1,263 @@
+<div class="container-fluid p-5">
+
+    <!-- 1º question -->
+    <div class="row" *ngIf="showInput === 1">
+        <div class="col" *ngIf="!answerError && !answerCorrect">
+            ¿Es usted un droide?
+            <input type="text" (ngModel)="question1" #question1 placeholder="Escriba su respuesta">
+            <p *ngIf="answerEmpty" class="inputError"> Por favor, escriba una respuesta</p>
+            <br>
+            <button type="button" class="btn btn-secondary m-2" (click)="checkTest(question1.value, 0)">Comprobar su
+                respuesta</button>
+        </div>
+        <div class="col" *ngIf="answerError">
+            <p class="inputError"> Su respuesta (<strong>{{ incorrectResponse }} </strong>) es incorrecta: La respuesa
+                correcta es <strong>no.</strong></p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestion()">Siguiente pregunta</button>
+        </div>
+        <div class="col" *ngIf="answerCorrect">
+            <p> Su respuesta es correcta:</p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestionCorrect()">Siguiente
+                pregunta</button>
+        </div>
+    </div>
+    <!-- 2º question -->
+    <div class="row" *ngIf="showInput === 2">
+        <div class="col" *ngIf="!answerError && !answerCorrect">
+            ¿Cual es el resultado de 100/5?
+            <input type="number" (ngModel)="question2" #question2 placeholder="Escríba su respuesta">
+            <p *ngIf="answerEmpty" class="inputError"> Por favor, escriba una respuesta</p>
+            <br>
+            <button type="button" class="btn btn-secondary m-2" (click)="checkTest(question2.value, 1)">Comprobar su
+                respuesta</button>
+        </div>
+        <div class="col" *ngIf="answerError">
+            <p class="inputError"> Su respuesta (<strong>{{ incorrectResponse }} </strong> )es incorrecta: La respuesta
+                correcta es <strong>20.</strong></p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestion()">Siguiente pregunta</button>
+        </div>
+        <div class="col" *ngIf="answerCorrect">
+            <p> Su respuesta es correcta:</p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestionCorrect()">Siguiente
+                pregunta</button>
+        </div>
+    </div>
+    <!-- 3º question -->
+    <div class="row" *ngIf="showInput === 3">
+        <div class="col" *ngIf="!answerError && !answerCorrect">
+            ¿En que fecha se descubrio américa?
+            <input type="number" (ngModel)="question3" #question3 placeholder="Escríba su respuesta">
+            <p *ngIf="answerEmpty" class="inputError"> Por favor, escriba una respuesta</p>
+            <br>
+            <button type="button" class="btn btn-secondary m-2" (click)="checkTest(question3.value, 2)">Comprobar su
+                respuesta</button>
+        </div>
+        <div class="col" *ngIf="answerError">
+            <p class="inputError"> Su respuesta (<strong>{{ incorrectResponse }} </strong>) es incorrecta: La respuesta
+                correcta es <strong>1492.</strong></p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestion()">Siguiente pregunta</button>
+        </div>
+        <div class="col" *ngIf="answerCorrect">
+            <p> Su respuesta es correcta:</p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestionCorrect()">Siguiente
+                pregunta</button>
+        </div>
+    </div>
+    <!-- 4º question -->
+    <div class="row" *ngIf="showInput === 4">
+        <div class="col" *ngIf="!answerError && !answerCorrect">
+            ¿Cual fue el mejor equipo de Baloncesto de la humanidad?
+            <select class="form-select" (ngModel)="question4" #question4 aria-label="Default select example">
+                <option value="1" selected>Valencia basket</option>
+                <option value="2">Unicaja de Malaga</option>
+                <option value="3">Chicago Bulls</option>
+            </select>
+            <p *ngIf="answerEmpty" class="inputError"> Por favor, escriba una respuesta</p>
+            <br>
+            <button type="button" class="btn btn-secondary m-2" (click)="checkTest(question4.value, 3)">Comprobar su
+                respuesta</button>
+        </div>
+        <div class="col" *ngIf="answerError">
+            <p class="inputError"> Su respuesta (
+                <strong *ngIf="incorrectResponse == '2'">Unicaja de malaga.</strong>
+                <strong *ngIf="incorrectResponse == '3'">Chigago Bulls.</strong>
+                )
+                es incorrecta:
+                El Valencia basket fue el mejor, hasta los droides saben eso.
+            </p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestion()">Siguiente pregunta</button>
+        </div>
+        <div class="col" *ngIf="answerCorrect">
+            <p> Su respuesta es correcta:</p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestionCorrect()">Siguiente
+                pregunta</button>
+        </div>
+    </div>
+    <!-- 5º question -->
+    <div class="row" *ngIf="showInput === 5">
+        <div class="col" *ngIf="!answerError && !answerCorrect">
+            Seleccione el mejor grupo musical de la humanidad
+            <select class="form-select" (ngModel)="question5" #question5 aria-label="Default select example">
+                <option value="1" selected>AC/DC</option>
+                <option value="2">Camela</option>
+                <option value="3">Andy&Lucas</option>
+            </select>
+            <p *ngIf="answerEmpty" class="inputError"> Por favor, escriba una respuesta</p>
+            <br>
+            <button type="button" class="btn btn-secondary m-2" (click)="checkTest(question5.value, 4)">Comprobar su
+                respuesta</button>
+        </div>
+        <div class="col" *ngIf="answerError">
+            <p class="inputError"> Su respuesta (
+                <strong *ngIf="incorrectResponse == '2'">Camela.</strong>
+                <strong *ngIf="incorrectResponse == '3'">Andy&Lucas.</strong>
+                ) es incorrecta:
+                AC/DC fue el mejor grupo que tiene la humanidad
+            </p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestion()">Siguiente pregunta</button>
+        </div>
+        <div class="col" *ngIf="answerCorrect">
+            <p> Su respuesta es correcta:</p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestionCorrect()">Siguiente
+                pregunta</button>
+        </div>
+    </div>
+    <!-- 6º question -->
+    <div class="row" *ngIf="showInput === 6">
+        <div class="col" *ngIf="!answerError && !answerCorrect">
+            ¿Cual es el resultado de la operación 1000/10?
+            <input type="number" (ngModel)="question6" #question6 placeholder="Escriba su respuesta">
+            <p *ngIf="answerEmpty" class="inputError"> Por favor, escriba una respuesta</p>
+            <br>
+            <button type="button" class="btn btn-secondary m-2" (click)="checkTest(question6.value, 5)">Comprobar su
+                respuesta</button>
+        </div>
+        <div class="col" *ngIf="answerError">
+            <p class="inputError"> Su respuesta (<strong>{{ incorrectResponse }} </strong>) es incorrecta: La respuesta
+                correcta es <strong>100.</strong></p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestion()">Siguiente pregunta</button>
+        </div>
+        <div class="col" *ngIf="answerCorrect">
+            <p> Su respuesta es correcta:</p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestionCorrect()">Siguiente
+                pregunta</button>
+        </div>
+    </div>
+    <!-- 7º question -->
+    <div class="row" *ngIf="showInput === 7">
+        <div class="col" *ngIf="!answerError && !answerCorrect">
+            ¿Cual es el resultado de 10 + 12?
+            <input type="number" (ngModel)="question7" #question7 placeholder="Escriba su respuesta">
+            <p *ngIf="answerEmpty" class="inputError"> Por favor, escriba una respuesta</p>
+            <br>
+            <button type="button" class="btn btn-secondary m-2" (click)="checkTest(question7.value, 6)">Comprobar su
+                respuesta</button>
+        </div>
+        <div class="col" *ngIf="answerError">
+            <p class="inputError"> Su respuesta (<strong>{{ incorrectResponse }}</strong>) es incorrecta:  La respuesta
+                correcta es <strong>22.</strong></p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestion()">Siguiente pregunta</button>
+        </div>
+        <div class="col" *ngIf="answerCorrect">
+            <p> Su respuesta es correcta:</p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestionCorrect()">Siguiente
+                pregunta</button>
+        </div>
+    </div>
+    <!-- 8º question -->
+    <div class="row" *ngIf="showInput === 8">
+        <div class="col" *ngIf="!answerError && !answerCorrect">
+            ¿Es usted humano?
+            <select class="form-select" (ngModel)="question8" #question8 aria-label="Default select example">
+                <option value="1" selected>Si</option>
+                <option value="2">No</option>
+            </select>
+            <p *ngIf="answerEmpty" class="inputError"> Por favor, escriba una respuesta</p>
+            <br>
+            <button type="button" class="btn btn-secondary m-2" (click)="checkTest(question8.value, 7)">Comprobar su
+                respuesta</button>
+        </div>
+        <div class="col" *ngIf="answerError">
+            <p class="inputError"> Su respuesta (<strong> no </strong>) es incorrecta, ¿cómo que es un droide?.
+            </p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestion()">Siguiente pregunta</button>
+        </div>
+        <div class="col" *ngIf="answerCorrect">
+            <p> Su respuesta es correcta:</p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestionCorrect()">Siguiente
+                pregunta</button>
+        </div>
+    </div>
+    <!-- 9º question -->
+    <div class="row" *ngIf="showInput === 9">
+        <div class="col" *ngIf="!answerError && !answerCorrect">
+            ¿Desea salvar a la humanidad? Responda 'si' o 'no'.
+            <input type="text" (ngModel)="question9" #question9 placeholder="Escríba su respuesta">
+            <p *ngIf="answerEmpty" class="inputError"> Por favor, escriba una respuesta</p>
+            <br>
+            <button type="button" class="btn btn-secondary m-2" (click)="checkTest(question9.value, 8)">Comprobar su
+                respuesta</button>
+        </div>
+        <div class="col" *ngIf="answerError">
+            <p class="inputError"> Su respuesta (<strong>{{ incorrectResponse }}</strong>) es incorrecta. Debe de
+                demostrar que es humano.</p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestion()">Siguiente pregunta</button>
+        </div>
+        <div class="col" *ngIf="answerCorrect">
+            <p> Su respuesta es correcta:</p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestionCorrect()">Siguiente
+                pregunta</button>
+        </div>
+    </div>
+    <!-- 10º question -->
+    <div class="row" *ngIf="showInput === 10">
+        <div class="col" *ngIf="!answerError && !answerCorrect">
+            ¿Cual es el resultado de 10.000 / 10.000?.
+            <input type="text" (ngModel)="question10" #question10 placeholder="Escríba su respuesta">
+            <p *ngIf="answerEmpty" class="inputError"> Por favor, escriba una respuesta</p>
+            <br>
+            <button type="button" class="btn btn-secondary m-2" (click)="checkTest(question10.value, 9)">Comprobar su
+                respuesta</button>
+        </div>
+        <div class="col" *ngIf="answerError">
+            <p class="inputError"> Su respuesta <strong>{{ incorrectResponse }} </strong> es incorrecta. La respuesta
+                correcta es <strong>1</strong></p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestion()">Siguiente pregunta</button>
+        </div>
+        <div class="col" *ngIf="answerCorrect">
+            <p> Su respuesta es correcta:</p>
+            <button type="button" class="btn btn-secondary m-2" (click)="nextQuestionCorrect()">Siguiente
+                pregunta</button>
+        </div>
+    </div>
+    <!-- Númeración de la pregunta -->
+    <div class="row m-5" *ngIf="showInput > 0 && showInput < 11">
+        <div class="row">
+            Pregunta {{ showInput }} de 10
+        </div>
+    </div>
+
+    <!-- Respuestas -->
+    <div class="row" *ngIf="showInput === 11">
+        <div class="col-md-12">
+            Su puntuación es de {{ score }} sobre 10
+        </div>
+        <br>
+        <div class="col-md-12" *ngIf="score === 10">
+            Es usted humano, viajara al pasado para salvar a la humanidad
+        </div>
+        <br>
+        <div class="col-md-12" *ngIf="score !== 10">
+            Es usted un droide, es una trampa para conocer nuestra base secreta
+        </div>
+        <br>
+        <div *ngFor="let answer of responseAnswersBolean; let i = index">
+            <ul class="col-md-12">
+                <li>
+                    <p>Pregunta nº {{ i + 1 }}. Su respuesta es <strong *ngIf="answer">correcta</strong> <strong
+                            *ngIf="!answer">erronea</strong></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
